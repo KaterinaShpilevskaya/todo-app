@@ -1,0 +1,85 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Cabin', sans-serif;
+}
+
+body {
+    margin: 0;
+    background: url(./assets/todobg.jpg) center/cover no-repeat;
+    min-height: 100vh;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.todo{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 15px;
+}
+
+.todo__button-delete-all {
+    padding: .5em;
+    background-color: rgb(237, 109, 109);
+}
+
+.todo__input-add {
+    padding: .5em;
+    font-size: 2 rem;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.todo__button-add {
+    padding: .5em;
+    background-color: rgb(150, 249, 120);
+}
+
+.todos__container {
+    display: flex;
+    flex-direction: column;
+}
+
+.todo__item {
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    margin: 1rem 0;
+    padding: .5em;
+    align-items: center;
+    text-transform: uppercase;
+    user-select: none;
+}
+
+.todo__description {
+    padding-right: 25px;
+}
+
+.todo__checkbox {
+    width: 20px;
+    height: 20px;
+    margin-left: auto;
+}
+
+.todo__button-delete {
+    pointer-events: none;
+    padding: .5em;
+    opacity: .5;
+    background-color: rgb(237, 109, 109);
+}
+
+.todo__checkbox:checked~ .todo__button-delete {
+    pointer-events: auto;
+    opacity: 1;
+}
+
+.noTodos {
+    text-align: center;
+    font-size: 2rem;
+}

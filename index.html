@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:ital@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <script src="todo.js" defer></script>
+    <title>todo-app</title>
+  </head>
+  <body>
+      <div class="container">
+        <div class="todo">
+        <button type="button" class="todo__button-delete-all" data-button-delete-all >Delete All</button>
+        <input type="text" class="todo__input-add" data-input-add>
+        <button type="button" class="todo__button-add" data-button-add>Add</button>
+      </div>
+      <div class="todos__container" data-todos-container>
+        <template data-todo-item-template>
+            <div class="todo__item" data-todo-item>
+                <div class="todo__description" data-todo-description>Do homework</div>
+                <div class="todo__date" data-todo-date></div>
+                <input type="checkbox" class="todo__checkbox" data-todo-checkbox>
+                <button class="todo__button-delete" data-todo-button-delete>Delete</button>
+            </div>
+        </template>
+    </div>
+    
+    </div>
+  </body>
+</html>
