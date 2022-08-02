@@ -5,7 +5,7 @@
 
 body {
     margin: 0;
-    background: url(./assets/todobg.jpg) center/cover no-repeat;
+    background: url(/assets/todobg.jpg) center/cover no-repeat;
     min-height: 100vh;
 }
 
