@@ -7,7 +7,6 @@
 
 app created with HTML, CSS, JAVASCRIPT
 
-***
 
 
 
