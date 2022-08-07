@@ -1,47 +1,37 @@
-const todoItemTemplate = document.querySelector('[data-todo-item-template]');
-const todosList = document.querySelector('[data-todos-container]'); 
-const inputAdd = document.querySelector('[data-input-add]');
-const buttonAdd = document.querySelector('[data-button-add]');
-const buttonDeleteAll = document.querySelector('[data-button-delete-all]');
+import {todoElements} from './app/todoElements.js';
+import {initializeTodos, updateLocalStorage} from './app/localStorage.js';
+import {getDate} from './app/getDate.js';
 
+const {
+    todoItemTemplate,
+    todosList,
+    inputAdd,
+    buttonAdd,
+    buttonDeleteAll,
+} = todoElements;
 
-let todos; 
-!localStorage.todos ? todos = [] :todos = JSON.parse(localStorage.getItem('todos')); 
-
-const updateLocal = () => {
-        localStorage.setItem('todos', JSON.stringify(todos));
-    }
+let todos = initializeTodos();
 
 buttonAdd.addEventListener('click', () => {
     const text = inputAdd.value.trim();
-
-    const getUserTime = (date) => {
-        let D = date.getDate();
-        let M = date.getMonth() + 1;
-        let Y = date.getFullYear();
-        let H = date.getHours();
-        let m = date.getMinutes();
-        m < 10 ? (m = '0' + m) : m;
-        return `${D}-${M}-${Y} | ${H}:${m}`;
-      };
-
+    
     if(text) {
         const newTodo = {
             id : todos.length + 1,
             text,
-            date: getUserTime(new Date()),
+            date: getDate(new Date()),
         }
         todos.push(newTodo);
         inputAdd.value = '';
     }
-    updateLocal();
+    updateLocalStorage(todos);
     inputAdd.focus();
     render();
 })
 
 buttonDeleteAll.addEventListener('click', () => {
     todos.splice(0, todos.length);
-    updateLocal();
+    updateLocalStorage(todos);
     render();
 })
 
@@ -58,7 +48,7 @@ function createTodoItem(id, text, date) {
 
     buttonDelete.addEventListener('click', () => {
         todos = todos.filter(todo => todo.id !== id)
-        updateLocal();
+        updateLocalStorage(todos);
         render();
     })
 
@@ -79,7 +69,7 @@ function appendTodos() {
     } else {
         todosList.insertAdjacentHTML('beforeend', `<p class = "noTodos"> No todos... </p>` ) 
     }
-    updateLocal();
+    updateLocalStorage(todos);
 }
 
 function render() {
@@ -88,5 +78,3 @@ function render() {
 }
 
 render();
-
-
