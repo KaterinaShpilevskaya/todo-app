@@ -17,9 +17,10 @@ buttonAdd.addEventListener('click', () => {
     
     if(text) {
         const newTodo = {
-            id : todos.length + 1,
+            id : Date.now(),
             text,
             date: getDate(new Date()),
+            checked: false,
         }
         todos.push(newTodo);
         inputAdd.value = '';
@@ -37,10 +38,22 @@ buttonDeleteAll.addEventListener('click', () => {
 
 
 
-function createTodoItem(id, text, date) {
+function createTodoItem(id, text, date, checked) {
     const todoItem = document.importNode(todoItemTemplate.content, true);
     const todoData = todoItem.querySelector('[data-todo-date]');
     todoData.textContent = `${date}`;
+    const todoCheck = todoItem.querySelector('[data-todo-checkbox]');
+    todoCheck.checked = checked;
+
+    todoCheck.addEventListener ('change', (e) => {
+        todos = todos.map( item => {
+            if (item.id === id) {
+                 item.checked = e.target.checked;
+            }
+            return item
+       });
+       updateLocalStorage(todos);
+       });
     const todoDescription = todoItem.querySelector('[data-todo-description]');
     todoDescription.textContent = text;
     
@@ -62,7 +75,7 @@ function clearTodoList() {
 function appendTodos() {
     if (todos.length) {
         todos.forEach(el => {
-            const todo = createTodoItem(el.id, el.text, el.date);
+            const todo = createTodoItem(el.id, el.text, el.date, el.checked);
             todosList.append(todo);
         })
     

@@ -1,9 +1,9 @@
 export const getDate = (date) => {
-    let D = date.getDate();
-    let M = date.getMonth() + 1;
-    let Y = date.getFullYear();
-    let H = date.getHours();
-    let m = date.getMinutes();
-    m < 10 ? (m = '0' + m) : m;
-    return `${D}-${M}-${Y} | ${H}:${m}`;
+    let newdate = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    minutes < 10 ? (minutes = '0' + minutes) : minutes;
+    return `${newdate}-${month}-${year} | ${hours}:${minutes}`;
   };
