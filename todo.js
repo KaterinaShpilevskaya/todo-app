@@ -18,9 +18,10 @@ buttonAdd.addEventListener('click', () => {
     if(text) {
         const newTodo = {
             id : Date.now(),
+            checked: false,
             text,
             date: getDate(new Date()),
-            checked: false,
+            
         }
         todos.push(newTodo);
         inputAdd.value = '';
@@ -38,10 +39,8 @@ buttonDeleteAll.addEventListener('click', () => {
 
 
 
-function createTodoItem(id, text, date, checked) {
+function createTodoItem(id, text, date,checked) {
     const todoItem = document.importNode(todoItemTemplate.content, true);
-    const todoData = todoItem.querySelector('[data-todo-date]');
-    todoData.textContent = `${date}`;
     const todoCheck = todoItem.querySelector('[data-todo-checkbox]');
     todoCheck.checked = checked;
 
@@ -56,6 +55,10 @@ function createTodoItem(id, text, date, checked) {
        });
     const todoDescription = todoItem.querySelector('[data-todo-description]');
     todoDescription.textContent = text;
+    const todoData = todoItem.querySelector('[data-todo-date]');
+    todoData.textContent = `${date}`;
+    
+    
     
     const buttonDelete = todoItem.querySelector('[data-todo-button-delete]');
 
