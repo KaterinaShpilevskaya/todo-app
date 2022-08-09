@@ -93,6 +93,10 @@ body {
     opacity: 1;
 }
 
+.todo__checkbox:checked~ .todo__date {
+    text-decoration: line-through;
+}
+
 
 .noTodos {
     text-align: center;
