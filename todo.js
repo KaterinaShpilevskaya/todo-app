@@ -8,6 +8,8 @@ const {
     inputAdd,
     buttonAdd,
     buttonDeleteAll,
+    taskActive,
+    taskCompleted,
 } = todoElements;
 
 let todos = initializeTodos();
@@ -43,18 +45,14 @@ function createTodoItem(id, text, date, checked) {
     todoCheck.checked = checked;
 
     todoCheck.addEventListener ('change', (e) => {
-    //     todos = todos.map( item => {
-    //         if (item.id === id) {
-    //              item.checked = e.target.checked;
-    //         }
-    //         return item
-    //    });
-
-            todos.forEach( todo => {
+               todos.forEach( todo => {
                 if (todo.id === id) {
                     todo.checked = e.target.checked;
+                    taskActive.textContent = calcActive();
+                    taskCompleted.textContent = calcCompleted();
                 }
             })
+         
 
        updateLocalStorage(todos);
        });
@@ -62,6 +60,8 @@ function createTodoItem(id, text, date, checked) {
     todoDescription.textContent = text;
     const todoData = todoItem.querySelector('[data-todo-date]');
     todoData.textContent = `${date}`;
+
+
     
     
     
@@ -96,6 +96,16 @@ function appendTodos() {
 function render() {
     clearTodoList();
     appendTodos();
+    taskActive.textContent = calcActive();
+    taskCompleted.textContent = calcCompleted();
 }
+
+function calcCompleted() {
+    return todos.filter((value) => value.checked === true).length;
+};
+
+function calcActive() {
+    return todos.filter((value) => value.checked === false).length;
+};
 
 render();

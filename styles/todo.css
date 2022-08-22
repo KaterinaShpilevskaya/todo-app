@@ -36,6 +36,11 @@ body {
     background-color: var(--color-red);;
 }
 
+.todo__button-delete-all:hover {
+    opacity: 0.7;
+    cursor: pointer !important;
+}
+
 .todo__input-add {
     padding: .5em;
     font-size: 2rem;
@@ -48,6 +53,11 @@ body {
     width: 20%;
     padding: .5em;
     background-color: var(--color-green);
+}
+
+.todo__button-add:hover {
+    opacity: 0.7;
+    cursor: pointer !important;
 }
 
 .todos__container {
@@ -101,5 +111,15 @@ body {
 .noTodos {
     text-align: center;
     font-size: 2rem;
+    color: var(--color-darkgreen);
+}
+
+.counter {
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+    gap: 1em;
+    font-size: 1.5em;
+    font-weight: 500;
     color: var(--color-darkgreen);
 }

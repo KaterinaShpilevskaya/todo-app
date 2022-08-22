@@ -21,6 +21,22 @@
         <input type="text" class="todo__input-add" data-input-add>
         <button type="button" class="todo__button-add" data-button-add>Add</button>
       </div>
+      <div class="counter" data-counter>
+        <div class="counter__active" data-counter-active>
+            Active:
+            <span
+                class="counter__active-span"
+                data-counter-active-span
+            ></span>
+        </div>
+        <div class="counter__completed" data-counter-completed>
+            Completed:
+            <span
+                class="counter__completed-span"
+                data-counter-completed-span
+            ></span>
+        </div>
+    </div>
       <div class="todos__container" data-todos-container>
         <template data-todo-item-template>
             <div class="todo__item" data-todo-item>
